@@ -8,6 +8,8 @@ Shows **Valve Texture Format (`.vtf`)** textures — Source engine: Half-Life 2,
 Garry's Mod, Team Fortress 2, Portal, … — as thumbnails in Windows Explorer, file dialogs and
 anywhere else Windows shows thumbnails.
 
+![VTFThumbnail](docs/screenshot.png)
+
 A small 64-bit shell extension (`IThumbnailProvider`). No VTFLib, no other DLLs, no Visual C++
 runtime. Companion project: [VTFExport](https://github.com/haos9cr/VTFExport), a VTF plug-in for
 Photoshop.

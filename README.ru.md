@@ -8,6 +8,8 @@
 Counter-Strike: Source, Garry's Mod, Team Fortress 2, Portal, … — эскизами в проводнике Windows,
 в диалогах открытия файлов и везде, где Windows показывает эскизы.
 
+![VTFThumbnail](docs/screenshot.png)
+
 Небольшое 64-битное расширение оболочки (`IThumbnailProvider`). Без VTFLib, без других DLL, без
 Visual C++ Redistributable. Родственный проект: [VTFExport](https://github.com/haos9cr/VTFExport) —
 плагин VTF для Photoshop.
