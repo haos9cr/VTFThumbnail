@@ -1,0 +1,12 @@
+# Build output
+bin/
+obj/
+dist/
+build/
+.vs/
+*.user
+*.aps
+
+# Python
+__pycache__/
+*.pyc

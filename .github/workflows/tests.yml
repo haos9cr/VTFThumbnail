@@ -1,0 +1,26 @@
+# Core tests on Linux and a Release build with Visual Studio on every push / PR.
+# The Wine tests (real DLL driven like Explorer, regsvr32) run with `tests/run_tests.sh --wine`.
+name: tests
+on:
+  push:
+  pull_request:
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - run: pip install srctools pillow
+      - run: bash tests/run_tests.sh
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: microsoft/setup-msbuild@v2
+      - run: msbuild VTFThumbnail.sln /p:Configuration=Release /p:Platform=x64 /m
+      - uses: actions/upload-artifact@v4
+        with:
+          name: VTFThumbnail-dll
+          path: bin/Release/VTFThumbnail.dll

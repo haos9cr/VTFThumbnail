@@ -1,0 +1,46 @@
+# Builds the DLL with Visual Studio and attaches dist/VTFThumbnail-<version>.zip to a GitHub release.
+# Start it either way:
+#   - on github.com: Releases -> Draft a new release -> tag v<version> (create new tag) -> Publish;
+#   - or push a tag: git tag v<version> && git push origin v<version>.
+# An empty release description is filled with the CHANGELOG.md section "## <version>".
+name: release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: microsoft/setup-msbuild@v2
+      - run: msbuild VTFThumbnail.sln /p:Configuration=Release /p:Platform=x64 /m
+      - name: Package
+        shell: pwsh
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File tools\make_release.ps1
+      - name: Publish
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = '${{ github.ref_name }}'
+          $version = $tag.TrimStart('v')
+          $zip = "dist\VTFThumbnail-$version.zip"
+          if (-not (Test-Path $zip)) { throw "$zip not found - does src\Version.h say $version?" }
+          # Changelog section "## <version>" up to the next "## ".
+          $notes = @(); $in = $false
+          foreach ($line in Get-Content CHANGELOG.md -Encoding UTF8) {
+            if ($line -match '^## ') { if ($in) { break }; $in = $line -match "^## $([regex]::Escape($version))\b"; continue }
+            if ($in) { $notes += $line }
+          }
+          if (-not $notes) { $notes = @("VTFThumbnail $version") }
+          Set-Content -Path notes.md -Value ($notes -join "`n").Trim() -Encoding UTF8
+          $body = gh release view $tag --json body --jq .body 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            # Release made on github.com: attach the zip, fill the text if it was left empty.
+            gh release upload $tag $zip --clobber
+            if (-not "$body".Trim()) { gh release edit $tag --notes-file notes.md }
+          } else {
+            gh release create $tag $zip --title "VTFThumbnail $version" --notes-file notes.md
+          }

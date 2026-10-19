@@ -1,0 +1,12 @@
+// Version.h - single place for the version number.
+#pragma once
+
+#define VTFTHUMB_VERSION_MAJOR 1
+#define VTFTHUMB_VERSION_MINOR 0
+#define VTFTHUMB_VERSION_PATCH 0
+
+#define VTFTHUMB_STR2(x) #x
+#define VTFTHUMB_STR(x) VTFTHUMB_STR2(x)
+#define VTFTHUMB_VERSION_STRING VTFTHUMB_STR(VTFTHUMB_VERSION_MAJOR) "." VTFTHUMB_STR(VTFTHUMB_VERSION_MINOR) "." VTFTHUMB_STR(VTFTHUMB_VERSION_PATCH)
+
+#define VTFTHUMB_URL "https://github.com/haos9cr/VTFThumbnail"

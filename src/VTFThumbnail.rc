@@ -1,0 +1,32 @@
+// VTFThumbnail.rc - version information.
+#include <winver.h>
+#include "Version.h"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION    VTFTHUMB_VERSION_MAJOR,VTFTHUMB_VERSION_MINOR,VTFTHUMB_VERSION_PATCH,0
+ PRODUCTVERSION VTFTHUMB_VERSION_MAJOR,VTFTHUMB_VERSION_MINOR,VTFTHUMB_VERSION_PATCH,0
+ FILEFLAGSMASK  0x3fL
+ FILEFLAGS      0x0L
+ FILEOS         VOS_NT_WINDOWS32
+ FILETYPE       VFT_DLL
+ FILESUBTYPE    0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName",      "haos9cr"
+            VALUE "FileDescription",  "VTF thumbnails for Windows Explorer"
+            VALUE "FileVersion",      VTFTHUMB_VERSION_STRING
+            VALUE "InternalName",     "VTFThumbnail"
+            VALUE "LegalCopyright",   "Copyright (c) 2026 haos9cr. MIT License."
+            VALUE "OriginalFilename", "VTFThumbnail.dll"
+            VALUE "ProductName",      "VTFThumbnail"
+            VALUE "ProductVersion",   VTFTHUMB_VERSION_STRING
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
