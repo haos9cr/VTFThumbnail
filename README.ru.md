@@ -11,7 +11,7 @@ Counter-Strike: Source, Garry's Mod, Team Fortress 2, Portal, … — эскиз
 ![VTFThumbnail](docs/screenshot.png)
 
 Небольшое 64-битное расширение оболочки (`IThumbnailProvider`). Без VTFLib, без других DLL, без
-Visual C++ Redistributable. Родственный проект: [VTFExport](https://github.com/haos9cr/VTFExport) —
+Visual C++ Redistributable. Родственный проект: [VTFBridge](https://github.com/haos9cr/VTFBridge) —
 плагин VTF для Photoshop.
 
 ## Возможности

@@ -1,6 +1,6 @@
 // VtfReader.cpp - dependency-free VTF reader.
 //
-// Originally written for VTFExport (https://github.com/haos9cr/VTFExport); maintained
+// Originally written for VTFBridge (https://github.com/haos9cr/VTFBridge); maintained
 // separately here.
 #include "VtfReader.h"
 

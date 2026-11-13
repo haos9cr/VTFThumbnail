@@ -1,7 +1,7 @@
 # Third-party notices
 
 No third-party code is included. The VTF reader in `src/vtf/` started as the reader of
-[VTFExport](https://github.com/haos9cr/VTFExport) (same author, MIT).
+[VTFBridge](https://github.com/haos9cr/VTFBridge) (same author, MIT).
 
 ## References
 
